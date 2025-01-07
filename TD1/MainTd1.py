@@ -97,7 +97,7 @@ plt.title("Image redimensionnée")
 plt.show()
 
 ###########################################################
-# Q5 :
+# Q6 :
 ###########################################################
 resolution_range=["256x256","128x128","64x64","32x32"]
 range_n=[1,2,4,8]
@@ -108,11 +108,19 @@ for i in range(len(range_n)):
     plt.show()
     
 ###########################################################
-# Q6 :
+# Q7 :
 ###########################################################
 img_gray=cv2.imread(file_jpg,0)
 plt.imshow(img_gray, cmap="grey")
 plt.title("Image en niveau de gris")
 plt.show()
 
+###########################################################
+# Q8 :
+###########################################################
+from Functions_MainTd1 import NivGris
+my_img_gray = NivGris(image_jpg)
+plt.imshow(my_img_gray, cmap="grey")
+plt.title("Image en niveau de gris (Ma fonction Nivgris)")
+plt.show()
 
