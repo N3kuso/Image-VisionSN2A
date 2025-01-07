@@ -91,6 +91,17 @@ if flag ==1:
 ###########################################################
 # Q5 :
 ###########################################################
-
 image_jpg_resize=image_jpg[100:200,50:200]
 plt.imshow(image_jpg_resize)
+plt.show()
+
+###########################################################
+# Q5 :
+###########################################################
+resolution_range=["256x256","128x128","64x64","32x32"]
+range_n=[1,2,4,8]
+
+for i in range(len(range_n)):
+    plt.imshow(image_jpg[::range_n[i],::range_n[i]])
+    plt.title(resolution_range[i])
+    plt.show()
