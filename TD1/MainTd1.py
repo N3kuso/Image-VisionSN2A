@@ -93,6 +93,7 @@ if flag ==1:
 ###########################################################
 image_jpg_resize=image_jpg[100:200,50:200]
 plt.imshow(image_jpg_resize)
+plt.title("Image redimensionnée")
 plt.show()
 
 ###########################################################
@@ -105,3 +106,13 @@ for i in range(len(range_n)):
     plt.imshow(image_jpg[::range_n[i],::range_n[i]])
     plt.title(resolution_range[i])
     plt.show()
+    
+###########################################################
+# Q6 :
+###########################################################
+img_gray=cv2.imread(file_jpg,0)
+plt.imshow(img_gray, cmap="grey")
+plt.title("Image en niveau de gris")
+plt.show()
+
+
