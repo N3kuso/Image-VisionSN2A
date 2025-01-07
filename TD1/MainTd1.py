@@ -119,8 +119,19 @@ plt.show()
 # Q8 :
 ###########################################################
 from Functions_MainTd1 import NivGris
+
 my_img_gray = NivGris(image_jpg)
 plt.imshow(my_img_gray, cmap="grey")
 plt.title("Image en niveau de gris (Ma fonction Nivgris)")
+plt.show()
+
+###########################################################
+# Q9 :
+###########################################################
+from Functions_MainTd1 import NivGrisM
+
+my_img_gray2 = NivGrisM(image_jpg)
+plt.imshow(my_img_gray, cmap="grey")
+plt.title("Image en niveau de gris (Ma fonction NivgrisM)")
 plt.show()
 
