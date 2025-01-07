@@ -49,42 +49,48 @@ print(f"Image {file_bmp} -> Lignes = {len(image_bmp[:,0,0])} | Colonnes = {len(i
 # Q4 :
 ###########################################################
 list_cmap = ['viridis', 'plasma', 'inferno', 'magma', 'cividis']
+flag = 0
+if flag ==1:
+    for color in list_cmap:
+        # affichage image_png
+        plt.subplot(1,3,1)
+        plt.imshow(image_png[:,:,0], cmap=color)
+        plt.title(file_png)
+        plt.subplot(1,3,2)
+        plt.imshow(image_png[:,:,1], cmap=color)
+        plt.title(file_png)
+        plt.subplot(1,3,3)
+        plt.imshow(image_png[:,:,2], cmap=color)
+        plt.title(file_png)
+        plt.show()
+        
+        # Affichage image_jpg
+        plt.subplot(1,3,1)
+        plt.imshow(image_jpg[:,:,0], cmap=color)
+        plt.title(file_jpg)
+        plt.subplot(1,3,2)
+        plt.imshow(image_jpg[:,:,1], cmap=color)
+        plt.title(file_jpg)
+        plt.subplot(1,3,3)
+        plt.imshow(image_jpg[:,:,2], cmap=color)
+        plt.title(file_jpg)
+        plt.show()
+        
+        # Affichage image_bmp
+        plt.subplot(1,3,1)
+        plt.imshow(image_bmp[:,:,0], cmap=color)
+        plt.title(file_bmp)
+        plt.subplot(1,3,2)
+        plt.imshow(image_bmp[:,:,1], cmap=color)
+        plt.title(file_bmp)
+        plt.subplot(1,3,3)
+        plt.imshow(image_bmp[:,:,2], cmap=color)
+        plt.title(file_bmp)
+        plt.show()
 
-for color in list_cmap:
-    # affichage image_png
-    plt.subplot(1,3,1)
-    plt.imshow(image_png[:,:,0], cmap=color)
-    plt.title(file_png)
-    plt.subplot(1,3,2)
-    plt.imshow(image_png[:,:,1], cmap=color)
-    plt.title(file_png)
-    plt.subplot(1,3,3)
-    plt.imshow(image_png[:,:,2], cmap=color)
-    plt.title(file_png)
-    plt.show()
-    
-    # Affichage image_jpg
-    plt.subplot(1,3,1)
-    plt.imshow(image_jpg[:,:,0], cmap=color)
-    plt.title(file_jpg)
-    plt.subplot(1,3,2)
-    plt.imshow(image_jpg[:,:,1], cmap=color)
-    plt.title(file_jpg)
-    plt.subplot(1,3,3)
-    plt.imshow(image_jpg[:,:,2], cmap=color)
-    plt.title(file_jpg)
-    plt.show()
-    
-    # Affichage image_bmp
-    plt.subplot(1,3,1)
-    plt.imshow(image_bmp[:,:,0], cmap=color)
-    plt.title(file_bmp)
-    plt.subplot(1,3,2)
-    plt.imshow(image_bmp[:,:,1], cmap=color)
-    plt.title(file_bmp)
-    plt.subplot(1,3,3)
-    plt.imshow(image_bmp[:,:,2], cmap=color)
-    plt.title(file_bmp)
-    plt.show()
-    
+###########################################################
+# Q5 :
+###########################################################
 
+image_jpg_resize=image_jpg[100:200,50:200]
+plt.imshow(image_jpg_resize)
