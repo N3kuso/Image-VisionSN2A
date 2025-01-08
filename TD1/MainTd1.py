@@ -193,3 +193,64 @@ for i in range (len(alpha_range)):
 
 plt.show()
 
+###########################################################
+# Q13 :
+###########################################################
+# Lecture des images avec opencv dans le système BGR (par défaut)
+img_flowers = cv2.imread(file_png)
+img_lena = cv2.imread(file_jpg)
+img_hibiscus = cv2.imread(file_bmp)
+
+# Conversion des images dans le système HSV
+img_flowers_hsv = cv2.cvtColor(img_flowers, cv2.COLOR_BGR2HSV)
+img_lena_hsv = cv2.cvtColor(img_lena, cv2.COLOR_BGR2HSV)
+img_hibiscus_hsv = cv2.cvtColor(img_hibiscus, cv2.COLOR_BGR2HSV)
+
+# Plotting
+plt.subplot(1,3,1)
+plt.imshow(img_flowers_hsv)
+plt.title(file_png)
+plt.subplot(1,3,2)
+plt.imshow(img_lena_hsv)
+plt.title(file_jpg)
+plt.subplot(1,3,3)
+plt.imshow(img_hibiscus_hsv)
+plt.title(file_bmp)
+plt.show()
+
+
+# Conversion des images dans le système XYZ
+img_flowers_XYZ = cv2.cvtColor(img_flowers, cv2.COLOR_BGR2XYZ)
+img_lena_XYZ = cv2.cvtColor(img_lena, cv2.COLOR_BGR2XYZ)
+img_hibiscus_XYZ = cv2.cvtColor(img_hibiscus, cv2.COLOR_BGR2XYZ)
+
+# Plotting
+plt.subplot(1,3,1)
+plt.imshow(img_flowers_XYZ)
+plt.title(file_png)
+plt.subplot(1,3,2)
+plt.imshow(img_lena_XYZ)
+plt.title(file_jpg)
+plt.subplot(1,3,3)
+plt.imshow(img_hibiscus_XYZ)
+plt.title(file_bmp)
+plt.show()
+
+
+# Conversion des images dans le système YCrCb
+img_flowers_YCrCb = cv2.cvtColor(img_flowers, cv2.COLOR_BGR2YCrCb)
+img_lena_YCrCb = cv2.cvtColor(img_lena, cv2.COLOR_BGR2YCrCb)
+img_hibiscus_YCrCb = cv2.cvtColor(img_hibiscus, cv2.COLOR_BGR2YCrCb)
+
+# Plotting
+plt.subplot(1,3,1)
+plt.imshow(img_flowers_YCrCb)
+plt.title(file_png)
+plt.subplot(1,3,2)
+plt.imshow(img_lena_YCrCb)
+plt.title(file_jpg)
+plt.subplot(1,3,3)
+plt.imshow(img_hibiscus_YCrCb)
+plt.title(file_bmp)
+plt.show()
+
