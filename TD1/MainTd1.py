@@ -174,3 +174,22 @@ plt.title("Ma fonction NivgrisM")
 plt.show()
 
 # Observation : de légères différences
+
+###########################################################
+# Q12 :
+###########################################################
+from Functions_MainTd1 import Morphing
+image_hibiscus = image_bmp[:502,:502]
+image_flowers = image_png
+
+alpha_range = np.linspace(0,1,12)
+
+for i in range (len(alpha_range)):
+    img_temp= Morphing(image_hibiscus, image_flowers, alpha_range[i])
+    plt.subplot(3,4,i+1)
+    plt.imshow(img_temp)
+    plt.axis("off")
+    plt.title(f"Image {i+1}")
+
+plt.show()
+
