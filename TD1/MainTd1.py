@@ -135,3 +135,16 @@ plt.imshow(my_img_gray, cmap="grey")
 plt.title("Image en niveau de gris (Ma fonction NivgrisM)")
 plt.show()
 
+###########################################################
+# Q10 :
+###########################################################
+plt.subplot(1,3,1)
+plt.imshow(img_gray, cmap="grey")
+plt.title("niveau de gris")
+plt.subplot(1,3,2)
+plt.imshow(my_img_gray, cmap="grey")
+plt.title("Ma fonction Nivgris")
+plt.subplot(1,3,3)
+plt.imshow(my_img_gray, cmap="grey")
+plt.title("Ma fonction NivgrisM")
+plt.show()
