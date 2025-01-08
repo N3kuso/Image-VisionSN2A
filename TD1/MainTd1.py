@@ -138,13 +138,39 @@ plt.show()
 ###########################################################
 # Q10 :
 ###########################################################
-plt.subplot(1,3,1)
+plt.subplot(3,1,1)
 plt.imshow(img_gray, cmap="grey")
 plt.title("niveau de gris")
-plt.subplot(1,3,2)
+plt.subplot(3,1,2)
 plt.imshow(my_img_gray, cmap="grey")
 plt.title("Ma fonction Nivgris")
-plt.subplot(1,3,3)
+plt.subplot(3,1,3)
 plt.imshow(my_img_gray, cmap="grey")
 plt.title("Ma fonction NivgrisM")
 plt.show()
+
+###########################################################
+# Q11 :
+###########################################################
+plt.subplot(3,2,1)
+plt.imshow(img_gray, cmap="grey")
+plt.title("niveau de gris")
+plt.subplot(3,2,3)
+plt.imshow(my_img_gray, cmap="grey")
+plt.title("Ma fonction Nivgris")
+plt.subplot(3,2,5)
+plt.imshow(my_img_gray, cmap="grey")
+plt.title("Ma fonction NivgrisM")
+
+plt.subplot(3,2,2)
+plt.imshow(img_gray[:8,:8], cmap="grey")
+plt.title("niveau de gris")
+plt.subplot(3,2,4)
+plt.imshow(my_img_gray[:8,:8],cmap="grey")
+plt.title("Ma fonction Nivgris")
+plt.subplot(3,2,6)
+plt.imshow(my_img_gray[:8,:8],cmap="grey")
+plt.title("Ma fonction NivgrisM")
+plt.show()
+
+# Observation : de légères différences
