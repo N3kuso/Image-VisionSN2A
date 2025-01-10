@@ -254,3 +254,17 @@ plt.imshow(img_hibiscus_YCrCb)
 plt.title(file_bmp)
 plt.show()
 
+###########################################################
+# Q14 :
+###########################################################
+from Functions_MainTd1 import Quantize
+quantize_range = [2,4,8,16]
+
+k=0
+for n in quantize_range:
+    img_quantized = Quantize(image_jpg,n)
+    plt.subplot(221+k)
+    plt.title(f"{n} colors")
+    plt.imshow(img_quantized)
+    k+=1
+    

@@ -5,6 +5,7 @@ Fonctions pour le script MainTd1.py
 @author: kooky
 """
 import numpy as np
+import cv2
 
 
 def NivGris(img):
@@ -42,5 +43,20 @@ def Morphing(I1, I2, alpha):
     I1 = I1.astype(float)
     I2 = I2.astype(float)
     return (alpha*I1 + (1-alpha) * I2).astype(np.uint8)
+
+def Quantize(img, n):
+    img_reshape = img.reshape(-1,3)
+    img_reshape = img_reshape.astype(np.float32)
     
+    # Define criteria = ( type, max_iter = 100 , epsilon = 1.0 )
+    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 1.0)
+    
+    ret,label,center = cv2.kmeans(img_reshape,n,None,criteria,10,cv2.KMEANS_RANDOM_CENTERS)
+    
+    # Now convert back into uint8, and make original image
+    center = np.uint8(center)
+    res = center[label.flatten()]
+    res2 = res.reshape((img.shape))
+    
+    return res2
     
