@@ -267,4 +267,17 @@ for n in quantize_range:
     plt.title(f"{n} colors")
     plt.imshow(img_quantized)
     k+=1
-    
+
+plt.show()
+###########################################################
+# Q15 :
+###########################################################
+img_lena_gray = cv2.cvtColor(img_lena, cv2.COLOR_BGR2GRAY)
+
+plt.imshow(img_lena_gray, cmap="grey")
+plt.title("Original en Gris")
+plt.show()
+
+plt.imshow(img_lena_gray.T, cmap="grey")
+plt.title("Transposé")
+plt.show()
