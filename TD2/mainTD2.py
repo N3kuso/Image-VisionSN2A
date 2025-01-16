@@ -30,3 +30,30 @@ img_ballon_gray = cv2.cvtColor(img_ballon, cv2.COLOR_RGB2GRAY) # Conversion de l
 plt.imshow(img_ballon_gray, cmap="grey")
 plt.title("Ballon.jpg en niveau de gris")
 plt.show()
+
+###########################################################
+# Q4 :
+###########################################################
+from functionsMainTD2 import ImgNegative
+
+img_ballon_negative = ImgNegative(img_ballon_gray)
+
+#plt.hist(img_ballon_negative.reshape(-1,1), 255)
+
+# # Affichage
+plt.subplot(221)
+plt.imshow(img_ballon_gray, cmap="grey")
+plt.title("Ballon.jpg")
+
+plt.subplot(222)
+plt.hist(img_ballon_gray.reshape(-1,1), bins=255) # On vectorise la matrice sinon plt execute un histogramme de chaque ligne de notre matrice
+plt.title("Histogramme")
+
+plt.subplot(223)
+plt.imshow(img_ballon_negative, cmap="grey")
+plt.title("Ballon.jpg negatif")
+
+plt.subplot(224)
+plt.hist(img_ballon_negative.reshape(-1,1), bins=255)
+plt.title("Histogramme Negatif")
+plt.show()
