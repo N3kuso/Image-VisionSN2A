@@ -281,3 +281,16 @@ plt.show()
 plt.imshow(img_lena_gray.T, cmap="grey")
 plt.title("Transposé")
 plt.show()
+
+img_lena_gray_flip = np.flip(img_lena_gray)
+plt.imshow(img_lena_gray_flip, cmap="grey")
+plt.title("Flip")
+plt.show()
+
+plt.imshow(cv2.rotate(img_lena_gray, cv2.ROTATE_90_CLOCKWISE), cmap="grey")
+plt.title("Rotate 90 degrees")
+plt.show()
+
+plt.imshow(cv2.rotate(img_lena_gray, cv2.ROTATE_180), cmap="grey")
+plt.title("Rotation 180 degrees")
+plt.show()
