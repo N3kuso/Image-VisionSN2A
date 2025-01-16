@@ -294,3 +294,43 @@ plt.show()
 plt.imshow(cv2.rotate(img_lena_gray, cv2.ROTATE_180), cmap="grey")
 plt.title("Rotation 180 degrees")
 plt.show()
+
+###########################################################
+# Q16 :
+###########################################################
+img_lena_gray = cv2.cvtColor(img_lena, cv2.COLOR_BGR2GRAY)
+th, img_bin = cv2.threshold(img_lena_gray, 128, 255, cv2.THRESH_BINARY)
+mask = np.zeros((256,256), dtype=np.uint8)
+mask[50:206, 50:206] = 255
+
+plt.imshow(img_bin, cmap="grey")
+plt.title("Image binarisée")
+plt.show()
+
+# AND Operator
+AND_img = img_bin & mask
+
+plt.imshow(AND_img, cmap="grey")
+plt.title("AND Operator")
+plt.show()
+
+# OR Operator
+OR_img = img_bin | mask
+
+plt.imshow(OR_img, cmap="grey")
+plt.title("OR Operator")
+plt.show()
+
+# NOT Operator
+NOT_img = ~img_bin
+
+plt.imshow(NOT_img, cmap="grey")
+plt.title("NOT Operator")
+plt.show()
+
+# XOR Operator
+XOR_img = img_bin ^ mask
+
+plt.imshow(XOR_img, cmap="grey")
+plt.title("XOR Operator")
+plt.show()
