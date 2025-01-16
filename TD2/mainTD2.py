@@ -64,15 +64,25 @@ plt.show()
 from functionsMainTD2 import ImgLogarithme
 
 # Affichage
-plt.subplot(221)
+plt.subplot(4,2,1)
 plt.imshow(img_ballon_gray, cmap="grey")
 plt.title("Original")
 
+plt.subplot(4,2,2)
+plt.hist(img_ballon_gray.reshape(-1,1), bins=255)
+plt.title("Histogramme")
+
 c_range = [10,20,100]
-k=1
+k=3
 for c in c_range:
-    plt.subplot(221+k)
-    plt.imshow(ImgLogarithme(img_ballon_gray, c), cmap="grey")
+    img_log = ImgLogarithme(img_ballon_gray, c)
+    plt.subplot(4,2,k)
+    plt.imshow(img_log, cmap="grey")
     plt.title(f"Log facteur c :{c}")
+    
+    plt.subplot(4,2, (k+1))
+    plt.hist(img_log.reshape(-1,1), bins=255)
+    plt.title(f"Log facteur c :{c}")
+    
     k+=1
 plt.show()
