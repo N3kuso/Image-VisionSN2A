@@ -16,7 +16,17 @@ file_ballon = "ballon.jpg" # variable contenant le nom du fichier
 img_ballon = cv2.imread(file_ballon) # Lecture du fichier avec opencv, on obtient une image BGR
 img_ballon = cv2.cvtColor(img_ballon, cv2.COLOR_BGR2RGB) # Conversion de l'image en RGB
 
+# Affichage
 plt.imshow(img_ballon)
 plt.title("Ballon.jpg")
 plt.show()
 
+###########################################################
+# Q3 :
+###########################################################
+img_ballon_gray = cv2.cvtColor(img_ballon, cv2.COLOR_RGB2GRAY) # Conversion de l'image RGB en niveau de gris
+
+# Affichage avec la palette de couleur grise
+plt.imshow(img_ballon_gray, cmap="grey")
+plt.title("Ballon.jpg en niveau de gris")
+plt.show()
