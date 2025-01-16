@@ -57,3 +57,22 @@ plt.subplot(224)
 plt.hist(img_ballon_negative.reshape(-1,1), bins=255)
 plt.title("Histogramme Negatif")
 plt.show()
+
+###########################################################
+# Q5 :
+###########################################################
+from functionsMainTD2 import ImgLogarithme
+
+# Affichage
+plt.subplot(221)
+plt.imshow(img_ballon_gray, cmap="grey")
+plt.title("Original")
+
+c_range = [10,20,100]
+k=1
+for c in c_range:
+    plt.subplot(221+k)
+    plt.imshow(ImgLogarithme(img_ballon_gray, c), cmap="grey")
+    plt.title(f"Log facteur c :{c}")
+    k+=1
+plt.show()
