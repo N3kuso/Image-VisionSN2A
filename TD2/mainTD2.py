@@ -101,7 +101,7 @@ plt.subplot(4,2,2)
 plt.hist(img_ballon_gray.reshape(-1,1), bins=255)
 plt.title("Histogramme")
 
-p_range = [0.5,10,2]
+p_range = [0.01,5,0.5]
 k=3
 for p in p_range:
     img_pow = ImgPower(img_ballon_gray, p)
@@ -165,4 +165,28 @@ plt.title(f"Binarisé s : {s}")
 
 plt.subplot(224)
 plt.hist(img_seuil.reshape(-1,1), bins=255)
+plt.show()
+
+###########################################################
+# Q10 :
+###########################################################
+# Rechercher du meilleur seuil grâce à la méthode d'Otsu
+ret, otsu = cv2.threshold(img_ballon_gray,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+# ret -> Valeur de seuil trouvé | otsu -> Image binarisé
+
+# Affichage
+plt.subplot(221)
+plt.imshow(img_ballon_gray, cmap="grey")
+plt.title("Ballon.jpg")
+
+plt.subplot(222)
+plt.hist(img_ballon_gray.reshape(-1,1), bins=255) # On vectorise la matrice sinon plt execute un histogramme de chaque ligne de notre matrice
+plt.title("Histogramme")
+
+plt.subplot(223)
+plt.imshow(otsu, cmap="grey")
+plt.title(f"Otsu : {ret}")
+
+plt.subplot(224)
+plt.hist(otsu.reshape(-1,1), bins=255)
 plt.show()
