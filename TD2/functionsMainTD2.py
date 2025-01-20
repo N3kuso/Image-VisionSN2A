@@ -17,7 +17,7 @@ def ImgLogarithme(img, c):
 
 def ImgPower(img, p):
     img.astype(np.double)
-    return np.power(img/255, p)
+    return (255 * np.power(img/255, p)).astype(np.uint8)
 
 def ImgCut(img, s1, s2):
     tmp = img.copy()
