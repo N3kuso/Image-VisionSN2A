@@ -143,11 +143,11 @@ plt.hist(img_cut.reshape(-1,1), bins=255)
 plt.show()
 
 ###########################################################
-# Q8 :
+# Q8 + Q9 :
 ###########################################################
 from functionsMainTD2 import ImgSeuil
 
-s = 192
+s = int(input("Inserez une valeur de seuil : "))
 img_seuil = ImgSeuil(img_ballon_gray, s)
 
 # Affichage
