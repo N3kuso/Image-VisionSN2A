@@ -190,3 +190,22 @@ plt.title(f"Otsu : {ret}")
 plt.subplot(224)
 plt.hist(otsu.reshape(-1,1), bins=255)
 plt.show()
+
+###########################################################
+# Q11 :
+###########################################################
+from functionsMainTD2 import MyHist
+
+# Calcul de l'histogramme de l'image ballon à l'aide de ma fonction
+my_hist = MyHist(img_ballon)
+x= np.arange(0,256,1)
+color_range=["red", "green", "blue"]
+
+for i in range(3):
+    plt.bar(x, my_hist[:,i], color=color_range[i], label=color_range[i])
+
+plt.legend()
+plt.title("Mon Histogramme des couleurs")
+plt.show()
+
+
