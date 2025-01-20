@@ -18,3 +18,9 @@ def ImgLogarithme(img, c):
 def ImgPower(img, p):
     img.astype(np.double)
     return np.power(img/255, p)
+
+def ImgCut(img, s1, s2):
+    tmp = img.copy()
+    tmp[np.where(tmp < s1)] = 0 # valeur inférieure à s1 -> 0
+    tmp[np.where(tmp > s2)] = 255 # valeur supérieure à s2 -> 255
+    return tmp
