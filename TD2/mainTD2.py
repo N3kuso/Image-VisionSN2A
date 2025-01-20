@@ -194,15 +194,15 @@ plt.show()
 ###########################################################
 # Q11 :
 ###########################################################
-from functionsMainTD2 import MyHist
+from functionsMainTD2 import MyHistColor
 
 # Calcul de l'histogramme de l'image ballon à l'aide de ma fonction
-my_hist = MyHist(img_ballon)
+my_hist_color = MyHistColor(img_ballon)
 x= np.arange(0,256,1)
 color_range=["red", "green", "blue"]
 
 for i in range(3):
-    plt.bar(x, my_hist[:,i], color=color_range[i], label=color_range[i])
+    plt.bar(x, my_hist_color[:,i], color=color_range[i], label=color_range[i])
 
 plt.legend()
 plt.title("Mon Histogramme des couleurs")
@@ -218,4 +218,23 @@ for i,col in enumerate(color):
      plt.bar(x, histr[:,0],color = col, label=col)
      plt.xlim([0,256])
 plt.title("Histogramme opencv")
+plt.legend()
 plt.show()
+
+###########################################################
+# Q13 :
+###########################################################
+from functionsMainTD2 import MyHistGrey
+
+# Calcul de l'histogramme en niveau de gris avec ma fonction
+my_hist_grey = MyHistGrey(img_ballon_gray)
+
+plt.bar(x, my_hist_grey)
+plt.title("Mon Histogramme Niveau de gris")
+plt.show()
+
+# Comparaison avec la fonction histogramme de matplotlib
+plt.hist(img_ballon_gray.reshape(-1,1), bins=255)
+plt.title("Histogramme matplotlib Niveau de gris")
+plt.show()
+
