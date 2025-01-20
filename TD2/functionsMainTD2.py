@@ -31,7 +31,7 @@ def ImgSeuil(img, s):
     tmp[np.where(tmp > s)] = 255 # valeur supérieure à s -> 255
     return tmp
 
-def MyHist(img):
+def MyHistColor(img):
     H = np.zeros((256,3)) # Création d'une matrice 255 * 3 rempli de 0
     tmp = img.reshape(-1,3) # "Vectorisation de l'image" avec les colonnes correspondant aux couleurs RGB
     
@@ -42,6 +42,14 @@ def MyHist(img):
         #print(f"tmp[i,1] : {tmp[i,1]} | i : {i}")
         H[tmp[i,2], 2] = H[tmp[i,2], 2]+1 # Colonne histogramme blue
         #print(f"tmp[i,2] : {tmp[i,2]} | i : {i}")
+    return H
+
+def MyHistGrey(img):
+    H = np.zeros(256)
+    tmp = img.reshape(-1,1)
+    
+    for i in range(tmp.shape[0]):
+        H[tmp[i]] = H[tmp[i]] + 1
     
     return H
         
