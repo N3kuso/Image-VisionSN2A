@@ -115,3 +115,29 @@ for p in p_range:
     
     k+=2
 plt.show()
+
+###########################################################
+# Q7 :
+###########################################################
+from functionsMainTD2 import ImgCut
+
+s1 = 192
+s2 = 220
+img_cut = ImgCut(img_ballon_gray, s1, s2)
+
+# Affichage
+plt.subplot(221)
+plt.imshow(img_ballon_gray, cmap="grey")
+plt.title("Ballon.jpg")
+
+plt.subplot(222)
+plt.hist(img_ballon_gray.reshape(-1,1), bins=255) # On vectorise la matrice sinon plt execute un histogramme de chaque ligne de notre matrice
+plt.title("Histogramme")
+
+plt.subplot(223)
+plt.imshow(img_cut, cmap="grey")
+plt.title(f"s1 : {s1} | s2 : {s2}")
+
+plt.subplot(224)
+plt.hist(img_cut.reshape(-1,1), bins=255)
+plt.show()
