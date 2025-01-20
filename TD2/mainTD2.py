@@ -211,6 +211,7 @@ plt.show()
 ###########################################################
 # Q12 :
 ###########################################################
+# Comparaison avec la fonction calcHist de opencv 
 color = ('r','g','b')
 for i,col in enumerate(color):
      histr = cv2.calcHist([img_ballon],[i],None,[256],[0,256])
