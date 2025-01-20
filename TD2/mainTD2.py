@@ -208,4 +208,13 @@ plt.legend()
 plt.title("Mon Histogramme des couleurs")
 plt.show()
 
-
+###########################################################
+# Q12 :
+###########################################################
+color = ('r','g','b')
+for i,col in enumerate(color):
+     histr = cv2.calcHist([img_ballon],[i],None,[256],[0,256])
+     plt.bar(x, histr[:,0],color = col, label=col)
+     plt.xlim([0,256])
+plt.title("Histogramme opencv")
+plt.show()
