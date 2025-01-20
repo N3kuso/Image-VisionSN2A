@@ -238,3 +238,26 @@ plt.hist(img_ballon_gray.reshape(-1,1), bins=255)
 plt.title("Histogramme matplotlib Niveau de gris")
 plt.show()
 
+###########################################################
+# Q14 :
+###########################################################
+from functionsMainTD2 import HistCumul
+
+my_hist_cumul = HistCumul(img_ballon_gray)
+
+plt.plot(my_hist_cumul, color="green", label = "cumulé")
+plt.legend()
+plt.title("Mon Histogramme cumulé")
+plt.show()
+
+### Comparaison avec les méthodes opencv et numpy
+# Calcul de l'histogramme avec opencv
+hist = cv2.calcHist([img_ballon_gray], [0], None, [256], [0, 256])
+
+# Calcul de l'histogramme cumulé avec numpy
+hist_cumul = np.cumsum(hist)
+
+# Affichage
+plt.plot(hist_cumul, color='green', label='Cumulé')
+plt.legend()
+plt.title("Histogramme cumulé OpenCV/Numpy")
