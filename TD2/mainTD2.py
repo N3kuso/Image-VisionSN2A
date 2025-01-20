@@ -75,7 +75,6 @@ plt.title("Histogramme")
 c_range = [10,20,100]
 k=3
 for c in c_range:
-    print(k)
     img_log = ImgLogarithme(img_ballon_gray, c)
     plt.subplot(4,2,k)
     plt.imshow(img_log, cmap="grey")
@@ -83,6 +82,35 @@ for c in c_range:
     
     plt.subplot(4,2, (k+1))
     plt.hist(img_log.reshape(-1,1), bins=255)
+    #plt.title(f"Histogramme :{c}")
+    
+    k+=2
+plt.show()
+
+###########################################################
+# Q6 :
+###########################################################
+from functionsMainTD2 import ImgPower
+
+#Affichage
+plt.subplot(4,2,1)
+plt.imshow(img_ballon_gray, cmap="grey")
+plt.title("Original")
+
+plt.subplot(4,2,2)
+plt.hist(img_ballon_gray.reshape(-1,1), bins=255)
+plt.title("Histogramme")
+
+p_range = [0.5,10,2]
+k=3
+for p in p_range:
+    img_pow = ImgPower(img_ballon_gray, p)
+    plt.subplot(4,2,k)
+    plt.imshow(img_pow, cmap="grey")
+    plt.title(f"Pow facteur p :{p}")
+    
+    plt.subplot(4,2, (k+1))
+    plt.hist(img_pow.reshape(-1,1), bins=255)
     #plt.title(f"Histogramme :{c}")
     
     k+=2
