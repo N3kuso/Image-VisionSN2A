@@ -141,3 +141,28 @@ plt.title(f"s1 : {s1} | s2 : {s2}")
 plt.subplot(224)
 plt.hist(img_cut.reshape(-1,1), bins=255)
 plt.show()
+
+###########################################################
+# Q8 :
+###########################################################
+from functionsMainTD2 import ImgSeuil
+
+s = 192
+img_seuil = ImgSeuil(img_ballon_gray, s)
+
+# Affichage
+plt.subplot(221)
+plt.imshow(img_ballon_gray, cmap="grey")
+plt.title("Ballon.jpg")
+
+plt.subplot(222)
+plt.hist(img_ballon_gray.reshape(-1,1), bins=255) # On vectorise la matrice sinon plt execute un histogramme de chaque ligne de notre matrice
+plt.title("Histogramme")
+
+plt.subplot(223)
+plt.imshow(img_seuil, cmap="grey")
+plt.title(f"Binarisé s : {s}")
+
+plt.subplot(224)
+plt.hist(img_seuil.reshape(-1,1), bins=255)
+plt.show()
