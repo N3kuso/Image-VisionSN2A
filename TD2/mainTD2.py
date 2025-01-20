@@ -75,6 +75,7 @@ plt.title("Histogramme")
 c_range = [10,20,100]
 k=3
 for c in c_range:
+    print(k)
     img_log = ImgLogarithme(img_ballon_gray, c)
     plt.subplot(4,2,k)
     plt.imshow(img_log, cmap="grey")
@@ -82,7 +83,7 @@ for c in c_range:
     
     plt.subplot(4,2, (k+1))
     plt.hist(img_log.reshape(-1,1), bins=255)
-    plt.title(f"Log facteur c :{c}")
+    #plt.title(f"Histogramme :{c}")
     
-    k+=1
+    k+=2
 plt.show()
