@@ -24,3 +24,9 @@ def ImgCut(img, s1, s2):
     tmp[np.where(tmp < s1)] = 0 # valeur inférieure à s1 -> 0
     tmp[np.where(tmp > s2)] = 255 # valeur supérieure à s2 -> 255
     return tmp
+
+def ImgSeuil(img, s):
+    tmp = img.copy()
+    tmp[np.where(tmp < s)] = 0 # valeur inférieure à s -> 0
+    tmp[np.where(tmp > s)] = 255 # valeur supérieure à s -> 255
+    return tmp
