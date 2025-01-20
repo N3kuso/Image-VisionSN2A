@@ -49,7 +49,17 @@ def MyHistGrey(img):
     tmp = img.reshape(-1,1)
     
     for i in range(tmp.shape[0]):
-        H[tmp[i]] = H[tmp[i]] + 1
-    
+        H[tmp[i]] = H[tmp[i]] + 1    
     return H
+
+def HistCumul(img):
+    hist = MyHistGrey(img) # Usage de fonction pour calculer l'histogramme de mon image
+    
+    hist_cumul = np.zeros(256)
+    hist_cumul[0] = hist[0]
+    
+    for i in range(1, 256):
+        hist_cumul[i] = hist_cumul[i-1] + hist[i]
+        
+    return hist_cumul
         
