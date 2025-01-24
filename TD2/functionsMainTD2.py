@@ -63,3 +63,12 @@ def HistCumul(img):
         
     return hist_cumul
         
+def ExpensionDyn(img):
+    tmp = img.copy()
+    tmp = tmp.astype(np.double)
+    
+    vmin = np.min(tmp) # Récupère la valeur min de l'image
+    vmax = np.max(tmp) # Recupère la valeur max de l'image
+    
+    result = (tmp - vmin) * 255/(vmax-vmin)
+    return result.reshape(img.shape).astype(np.uint8)
