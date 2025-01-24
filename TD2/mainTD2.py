@@ -261,3 +261,34 @@ hist_cumul = np.cumsum(hist)
 plt.plot(hist_cumul, color='green', label='Cumulé')
 plt.legend()
 plt.title("Histogramme cumulé OpenCV/Numpy")
+plt.show()
+
+###########################################################
+# Q15 :
+###########################################################
+file_contraste = "contraste1.png" # variable contenant le nom du fichier
+img_contraste = cv2.imread(file_contraste) # Lecture du fichier avec opencv, on obtient une image BGR
+img_contraste = cv2.cvtColor(img_contraste, cv2.COLOR_BGR2RGB) # Conversion de l'image en RGB
+
+from functionsMainTD2 import ExpensionDyn
+
+# Affichage
+plt.subplot(221)
+plt.imshow(img_contraste)
+plt.title("contraste1.png")
+
+plt.subplot(222)
+plt.hist(img_contraste.reshape(-1,1), bins=255) # On vectorise la matrice sinon plt execute un histogramme de chaque ligne de notre matrice
+plt.title("Histogramme")
+plt.show()
+
+img_contraste_expanded = ExpensionDyn(img_contraste)
+
+# Affichage
+plt.subplot(221)
+plt.imshow(img_contraste_expanded)
+plt.title("contraste1.jpg expanded")
+
+plt.subplot(222)
+plt.hist(img_contraste_expanded.reshape(-1,1), bins=255) # On vectorise la matrice sinon plt execute un histogramme de chaque ligne de notre matrice
+plt.title("Histogramme")
