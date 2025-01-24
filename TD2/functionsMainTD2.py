@@ -65,7 +65,7 @@ def HistCumul(img):
         
 def ExpensionDyn(img):
     tmp = img.copy()
-    
+    tmp = tmp.astype(np.double)
     vmin = np.min(tmp) # Récupère la valeur min de l'image
     vmax = np.max(tmp) # Recupère la valeur max de l'image
      
@@ -73,5 +73,8 @@ def ExpensionDyn(img):
 
 def EgalHistogramme(img):
     tmp = img.copy()
+        
+    hist_c = 255 * HistCumul(tmp)
+    hist_c = hist_c.astype(np.uint8)
     
-    return 
+    return hist_c[tmp]
