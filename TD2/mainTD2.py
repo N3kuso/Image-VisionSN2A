@@ -277,7 +277,7 @@ plt.imshow(img_contraste, cmap="grey")
 plt.title("contraste1.png")
 
 plt.subplot(222)
-plt.hist(img_contraste.reshape(-1,1), bins=255) # On vectorise la matrice sinon plt execute un histogramme de chaque ligne de notre matrice
+plt.hist(img_contraste.reshape(-1,1), bins=255, range=(0,256)) # On vectorise la matrice sinon plt execute un histogramme de chaque ligne de notre matrice
 plt.title("Histogramme")
 plt.show()
 
@@ -289,7 +289,7 @@ plt.imshow(img_contraste_expanded, cmap="grey")
 plt.title("contraste1.jpg expanded")
 
 plt.subplot(222)
-plt.hist(img_contraste_expanded.reshape(-1,1), bins=255) # On vectorise la matrice sinon plt execute un histogramme de chaque ligne de notre matrice
+plt.hist(img_contraste_expanded.reshape(-1,1), bins=255, range=(0,256)) # On vectorise la matrice sinon plt execute un histogramme de chaque ligne de notre matrice
 plt.title("Histogramme")
 plt.show()
 
@@ -297,14 +297,15 @@ plt.show()
 # Q16 :
 ###########################################################
 from functionsMainTD2 import EgalHistogramme
-img_contraste_equalized = EgalHistogramme(img_contraste_expanded)
+
+img_contraste_equalized = EgalHistogramme(img_contraste)
 
 # Affichage
 plt.subplot(221)
 plt.imshow(img_contraste_equalized, cmap="grey")
-plt.title("contraste1.jpg expanded")
+plt.title("contraste1.jpg")
 
 plt.subplot(222)
-plt.hist(img_contraste_equalized.reshape(-1,1), bins=255) # On vectorise la matrice sinon plt execute un histogramme de chaque ligne de notre matrice
+plt.hist(img_contraste_equalized.reshape(-1,1), bins=255, range=(0,256)) # On vectorise la matrice sinon plt execute un histogramme de chaque ligne de notre matrice
 plt.title("Histogramme")
 plt.show()
