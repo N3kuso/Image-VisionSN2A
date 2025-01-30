@@ -297,7 +297,6 @@ plt.show()
 # Q16 :
 ###########################################################
 from functionsMainTD2 import EgalHistogramme
-
 img_contraste_equalized = EgalHistogramme(img_contraste_expanded)
 
 # Affichage
