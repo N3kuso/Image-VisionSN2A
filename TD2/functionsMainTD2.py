@@ -71,19 +71,16 @@ def ExpensionDyn(img):
      
     return (tmp - vmin) * (255 / (vmax-vmin)).astype(np.uint8)
 
-def EgalHistogramme(img):
-    tmp = img.copy()
-    tmp = tmp.astype(np.uint8)
-    
+def EgalHistogramme(img):    
     # Calcul de l'histogramme de l'image
-    hist, bins = np.histogram(tmp.flatten(), bins=256, range=[0, 256])
+    hist, bins = np.histogram(img, bins=256, range=[0, 256], density=True)
 
     # Calcul de l'histogramme cumulé
-    histCumul = hist.cumsum()
+    histCumul = np.cumsum(hist)
     
-    histCumul = histCumul.astype(np.uint8)
+    tmp = np.uint8(255 * histCumul)
 
     # Transformation de l'image d'entrée en utilisant l'histogramme cumulé
-    image_equalized = 255 * histCumul[tmp]
+    image_equalized = tmp[img]
     
     return image_equalized
