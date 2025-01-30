@@ -5,3 +5,19 @@ Script pour le TD3 Image&Vision
 @author: kooky
 """
 
+import numpy as np
+import matplotlib.pyplot as plt
+import cv2
+
+###########################################################
+# Q2 :
+###########################################################
+file_ballon = "ballon.jpg" # variable contenant le nom du fichier
+img_ballon = cv2.imread(file_ballon) # Lecture du fichier avec opencv, on obtient une image BGR
+img_ballon = cv2.cvtColor(img_ballon, cv2.COLOR_BGR2RGB) # Conversion de l'image en RGB
+
+# Affichage
+plt.figure(2)
+plt.imshow(img_ballon)
+plt.title("Ballon.jpg")
+plt.show()
