@@ -87,4 +87,40 @@ for i,kernel_size in enumerate(kernel_size_range):
     plt.title(f"{kernel_size}")
 
 plt.tight_layout()
+#plt.show()
+
+## Filtre passe-bas gaussien ##
+sigma = 5
+# Image Salt & Pepper
+plt.figure(7)
+plt.subplot(3, 3, 1)
+plt.imshow(img_ballon_salt_pepper)
+plt.title("Ballon.jpg Salt & pepper")
+
+kernel_size_range = [(3,3), (5,5), (7,7), (11,11)] # Plage de taille de kernel
+for i,kernel_size in enumerate(kernel_size_range):
+    print(f"Kernel_size : {kernel_size}")
+    img_filtered = cv2.GaussianBlur(img_ballon_salt_pepper, kernel_size, sigma) # Filtrage de l'image
+    plt.subplot(3, 3, 2+i)
+    plt.imshow(img_filtered)
+    plt.title(f"{kernel_size}")
+
+plt.tight_layout()
+#plt.show()
+
+# Image Gaussien
+plt.figure(8)
+plt.subplot(3, 3, 1)
+plt.imshow(img_ballon_gaussian)
+plt.title("Ballon.jpg gaussian")
+
+kernel_size_range = [(3,3), (5,5), (7,7), (11,11)] # Plage de taille de kernel
+for i,kernel_size in enumerate(kernel_size_range):
+    print(f"Kernel_size : {kernel_size}")
+    img_filtered = cv2.GaussianBlur(img_ballon_gaussian, kernel_size, sigma) # Filtrage de l'image
+    plt.subplot(3, 3, 2+i)
+    plt.imshow(img_filtered)
+    plt.title(f"{kernel_size}")
+
+plt.tight_layout()
 plt.show()
