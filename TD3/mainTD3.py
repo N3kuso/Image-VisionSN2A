@@ -13,7 +13,7 @@ import skimage as ski
 ###########################################################
 # Q2 :
 ###########################################################
-file_ballon = "TD3/ballon.jpg" # variable contenant le nom du fichier
+file_ballon = "TD3/colorful.jpg" # variable contenant le nom du fichier
 img_ballon = cv2.imread(file_ballon) # Lecture du fichier avec opencv, on obtient une image BGR
 img_ballon = cv2.cvtColor(img_ballon, cv2.COLOR_BGR2RGB) # Conversion de l'image en RGB
 
@@ -65,6 +65,23 @@ kernel_size_range = [(3,3), (5,5), (7,7), (11,11)] # Plage de taille de kernel
 for i,kernel_size in enumerate(kernel_size_range):
     print(f"Kernel_size : {kernel_size}")
     img_filtered = cv2.blur(img_ballon_salt_pepper, kernel_size) # Filtrage de l'image
+    plt.subplot(3, 3, 2+i)
+    plt.imshow(img_filtered)
+    plt.title(f"{kernel_size}")
+
+plt.tight_layout()
+#plt.show()
+
+# Image Gaussien
+plt.figure(6)
+plt.subplot(3, 3, 1)
+plt.imshow(img_ballon_gaussian)
+plt.title("Ballon.jpg gaussian")
+
+kernel_size_range = [(3,3), (5,5), (7,7), (11,11)] # Plage de taille de kernel
+for i,kernel_size in enumerate(kernel_size_range):
+    print(f"Kernel_size : {kernel_size}")
+    img_filtered = cv2.blur(img_ballon_gaussian, kernel_size) # Filtrage de l'image
     plt.subplot(3, 3, 2+i)
     plt.imshow(img_filtered)
     plt.title(f"{kernel_size}")
