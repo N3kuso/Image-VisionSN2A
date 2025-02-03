@@ -117,4 +117,44 @@ for i,kernel_size in enumerate(kernel_size_range):
     axes[1+i,1].set_title(f"{kernel_size}")
 
 plt.tight_layout()
+#plt.show()
+
+## Filtre passe-bas conique ##
+# Image Salt & Pepper
+fig, axes = plt.subplots(nrows=2, ncols=2)
+fig = plt.figure(7)
+fig.suptitle("Filtre Conique")
+axes[0,0].imshow(img_ballon_salt_pepper)
+axes[0,0].set_title("Ballon.jpg Salt & pepper")
+
+# Image Gaussien
+# plt.subplot(5, 2, 2)
+axes[0,1].imshow(img_ballon_gaussian)
+axes[0,1].set_title("Ballon.jpg gaussian")
+
+
+# Création du masque du filtre
+kernel_conique = np.array([
+    [1, 2, 1],
+    [2, 4, 2],
+    [1, 2, 1]
+], dtype=np.float32)
+
+kernel_conique /= kernel_conique.sum()
+
+print(kernel_conique)
+
+# Filtrage de l'image Salt & Pepper
+img_sp_filtered = cv2.filter2D(src=img_ballon_salt_pepper, ddepth=-1, kernel=kernel_conique) # Filtrage de l'image
+# plt.subplot(5, 2, 3+i)
+axes[1,0].imshow(img_sp_filtered)
+axes[1,0].set_title(f"{kernel_size}")
+
+# Filtrage de l'image Gaussien
+img_gaussian_filtered = cv2.filter2D(src=img_ballon_gaussian, ddepth=-1, kernel=kernel_conique) # Filtrage de l'image
+# plt.subplot(5, 2, 4+i)
+axes[1,1].imshow(img_gaussian_filtered)
+axes[1,1].set_title(f"{kernel_size}")
+
+plt.tight_layout()
 plt.show()
