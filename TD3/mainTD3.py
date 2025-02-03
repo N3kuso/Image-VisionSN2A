@@ -221,4 +221,32 @@ for i,kernel_size in enumerate(kernel_size_range):
     axes[1+i,1].set_title(f"{kernel_size}")
 
 plt.tight_layout()
+#plt.show()
+
+###########################################################
+# Q9 :
+###########################################################
+## Filtre median successif ##
+fig, axes = plt.subplots(nrows=4, ncols=1, figsize=(10,15))
+fig = plt.figure(10)
+# Image Salt & Pepper
+axes[0].imshow(img_ballon_salt_pepper)
+axes[0].set_title("Snake.png Salt & pepper")
+
+
+kernel_size = 7
+# Filtrage de l'image Salt & Pepper
+# 1 fois
+img_sp_filtered = cv2.medianBlur(img_ballon_salt_pepper, kernel_size) # Filtrage de l'image
+axes[1].imshow(img_sp_filtered)
+
+# 2 fois
+img_sp_filtered = cv2.medianBlur(img_sp_filtered, kernel_size) # Filtrage de l'image
+axes[2].imshow(img_sp_filtered)
+
+# 3 fois
+img_sp_filtered = cv2.medianBlur(img_sp_filtered, kernel_size) # Filtrage de l'image
+axes[3].imshow(img_sp_filtered)
+
+plt.tight_layout()
 plt.show()
