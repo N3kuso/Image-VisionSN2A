@@ -26,7 +26,7 @@ plt.title("Ballon.jpg")
 ###########################################################
 # Q3 :
 ###########################################################
-saltPepper_rate = 0.15 #float(input("Entrez le taux de bruit Salt & Pepper: "))
+saltPepper_rate = 0.05 #float(input("Entrez le taux de bruit Salt & Pepper: "))
 # Ajout d'un bruit Salt & Pepper
 img_ballon_salt_pepper = ski.util.random_noise(img_ballon, mode='s&p', amount=saltPepper_rate )
 img_ballon_salt_pepper = np.uint8(255 * img_ballon_salt_pepper) # Conversion vers des valeurs entre 0 et 255
@@ -40,9 +40,9 @@ plt.title("Ballon.jpg Salt & Pepper")
 ###########################################################
 # Q4 :
 ###########################################################
-variance_gaussian = 0.05 #float(input("Entrez la variance du bruit Gaussien: "))
+variance_gaussian = 0.01 #float(input("Entrez la variance du bruit Gaussien: "))
 # Ajout d'un bruit Gaussien
-img_ballon_gaussian = ski.util.random_noise(img_ballon, mode='gaussian', var=variance_gaussian) 
+img_ballon_gaussian = ski.util.random_noise(img_ballon, mode='gaussian', mean= 0.001, var=variance_gaussian) 
 img_ballon_gaussian = np.uint8(255 * img_ballon_gaussian)# Conversion vers des valeurs entre 0 et 255
 
 # Affichage
