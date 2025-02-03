@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 import skimage as ski
+import os
 
 ###########################################################
 # Q2 :
@@ -155,6 +156,34 @@ img_gaussian_filtered = cv2.filter2D(src=img_ballon_gaussian, ddepth=-1, kernel=
 # plt.subplot(5, 2, 4+i)
 axes[1,1].imshow(img_gaussian_filtered)
 axes[1,1].set_title(f"{kernel_size}")
+
+plt.tight_layout()
+#plt.show()
+
+###########################################################
+# Q6 :
+###########################################################
+## Filtre Moyenneur ##
+kernel_size_range = [(3,3), (5,5), (7,7), (11,11)] # Plage de taille de kernel
+
+fig, axes = plt.subplots(nrows=4, ncols=3, figsize=(10,15))
+fig = plt.figure(8)
+
+for i,kernel_size in enumerate(kernel_size_range):
+    # Création du masque
+    kernel = np.ones(kernel_size)
+    kernel /= kernel.sum()
+    print(kernel)
+
+    # Calcul de la fft2D
+    y = np.fft.fft2(kernel, s=(64,64))
+
+    # Affichage
+    axes[i,0].imshow(kernel, cmap='jet')
+
+    axes[i,1].imshow(np.fft.fftshift(np.abs(y)),cmap="jet")
+
+    axes[i,2].imshow(np.fft.fftshift(np.angle(y)), cmap="jet")
 
 plt.tight_layout()
 plt.show()
