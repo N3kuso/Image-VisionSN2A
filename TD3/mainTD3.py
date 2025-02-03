@@ -56,39 +56,35 @@ plt.title("Ballon.jpg Gaussien")
 ###########################################################
 ## Filtre passe-bas moyenneur ##
 # Image Salt & Pepper
-plt.figure(5)
-plt.subplot(3, 3, 1)
-plt.imshow(img_ballon_salt_pepper)
-plt.title("Ballon.jpg Salt & pepper")
-
-kernel_size_range = [(3,3), (5,5), (7,7), (11,11)] # Plage de taille de kernel
-for i,kernel_size in enumerate(kernel_size_range):
-    print(f"Kernel_size : {kernel_size}")
-    img_filtered = cv2.blur(img_ballon_salt_pepper, kernel_size) # Filtrage de l'image
-    plt.subplot(3, 3, 2+i)
-    plt.imshow(img_filtered)
-    plt.title(f"{kernel_size}")
-
-plt.tight_layout()
-#plt.show()
+fig, axes = plt.subplots(nrows=5, ncols=2, figsize=(10,15))
+fig = plt.figure(5)
+axes[0,0].imshow(img_ballon_salt_pepper)
+axes[0,0].set_title("Ballon.jpg Salt & pepper")
 
 # Image Gaussien
-plt.figure(6)
-plt.subplot(3, 3, 1)
-plt.imshow(img_ballon_gaussian)
-plt.title("Ballon.jpg gaussian")
+# plt.subplot(5, 2, 2)
+axes[0,1].imshow(img_ballon_gaussian)
+axes[0,1].set_title("Ballon.jpg gaussian")
 
 kernel_size_range = [(3,3), (5,5), (7,7), (11,11)] # Plage de taille de kernel
 for i,kernel_size in enumerate(kernel_size_range):
     print(f"Kernel_size : {kernel_size}")
-    img_filtered = cv2.blur(img_ballon_gaussian, kernel_size) # Filtrage de l'image
-    plt.subplot(3, 3, 2+i)
-    plt.imshow(img_filtered)
-    plt.title(f"{kernel_size}")
+    
+    # Filtrage de l'image Salt & Pepper
+    img_sp_filtered = cv2.blur(img_ballon_salt_pepper, kernel_size) # Filtrage de l'image
+    # plt.subplot(5, 2, 3+i)
+    axes[1+i,0].imshow(img_sp_filtered)
+    axes[1+i,0].set_title(f"{kernel_size}")
+
+    # Filtrage de l'image Gaussien
+    img_gaussian_filtered = cv2.blur(img_ballon_gaussian, kernel_size) # Filtrage de l'image
+    # plt.subplot(5, 2, 4+i)
+    axes[1+i,1].imshow(img_gaussian_filtered)
+    axes[1+i,1].set_title(f"{kernel_size}")
 
 plt.tight_layout()
-#plt.show()
-
+plt.show()
+ 
 ## Filtre passe-bas gaussien ##
 sigma = 5
 # Image Salt & Pepper
