@@ -14,7 +14,7 @@ import os
 ###########################################################
 # Q2 :
 ###########################################################
-file_ballon = "TD3/colorful.jpg" # variable contenant le nom du fichier
+file_ballon = "TD3/snake.png" # variable contenant le nom du fichier
 img_ballon = cv2.imread(file_ballon) # Lecture du fichier avec opencv, on obtient une image BGR
 img_ballon = cv2.cvtColor(img_ballon, cv2.COLOR_BGR2RGB) # Conversion de l'image en RGB
 
@@ -184,6 +184,41 @@ for i,kernel_size in enumerate(kernel_size_range):
     axes[i,1].imshow(np.fft.fftshift(np.abs(y)),cmap="jet")
 
     axes[i,2].imshow(np.fft.fftshift(np.angle(y)), cmap="jet")
+
+plt.tight_layout()
+#plt.show()
+
+###########################################################
+# Q8 :
+###########################################################
+## Filtre median ##
+# Image Salt & Pepper
+fig, axes = plt.subplots(nrows=4, ncols=2, figsize=(10,15))
+fig = plt.figure(9)
+fig.suptitle("Filtre median")
+axes[0,0].imshow(img_ballon_salt_pepper)
+axes[0,0].set_title("Snake.png Salt & pepper")
+
+# Image Gaussien
+# plt.subplot(5, 2, 2)
+axes[0,1].imshow(img_ballon_gaussian)
+axes[0,1].set_title("Snake.png gaussian")
+
+kernel_size_range = [3,5,7] # Plage de taille de kernel
+for i,kernel_size in enumerate(kernel_size_range):
+    print(f"Kernel_size : {kernel_size}")
+    
+    # Filtrage de l'image Salt & Pepper
+    img_sp_filtered = cv2.medianBlur(img_ballon_salt_pepper, kernel_size) # Filtrage de l'image
+    # plt.subplot(5, 2, 3+i)
+    axes[1+i,0].imshow(img_sp_filtered)
+    axes[1+i,0].set_title(f"{kernel_size}")
+
+    # Filtrage de l'image Gaussien
+    img_gaussian_filtered = cv2.medianBlur(img_ballon_gaussian, kernel_size) # Filtrage de l'image
+    # plt.subplot(5, 2, 4+i)
+    axes[1+i,1].imshow(img_gaussian_filtered)
+    axes[1+i,1].set_title(f"{kernel_size}")
 
 plt.tight_layout()
 plt.show()
