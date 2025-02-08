@@ -249,4 +249,68 @@ img_sp_filtered = cv2.medianBlur(img_sp_filtered, kernel_size) # Filtrage de l'i
 axes[3].imshow(img_sp_filtered)
 
 plt.tight_layout()
+#plt.show()
+
+###########################################################
+# Q10 :
+###########################################################
+filename = "TD3/colorful.jpg"
+img = cv2.imread(filename, 0) # Lecture du fichier avec opencv, image en niveau de gris
+
+# Filtre gradient
+gx_mask = np.array([[0, -1], [0, 1]], dtype=float) # Masque 2x2 gradient direction x
+gy_mask = np.array([[0, 0], [1, -1]], dtype=float) # Masque 2x2 gradient direction
+gradient_x = cv2.filter2D(img, cv2.CV_64F, gx_mask) # Dérivée selon x
+gradient_y = cv2.filter2D(img, cv2.CV_64F, gy_mask) # Dérivée selon y
+
+# Filtre Roberts
+roberts = ski.filters.roberts(img)
+
+# Filtre Prewitt
+prewitt = ski.filters.prewitt(img)
+
+# Filtre Sobel
+sobel_x = cv2.Sobel(img, cv2.CV_64F, dx=1, dy=0, ksize=3) # Dérivée selon X
+sobel_y = cv2.Sobel(img, cv2.CV_64F, dx=0, dy=1, ksize=3) # Dérivée selon X
+
+# Filtre Laplacien
+laplacian = cv2.Laplacian(img, cv2.CV_64F)
+
+### Affichage ###
+fig, axes = plt.subplots(nrows=2, ncols=4, figsize=(10,15))
+fig = plt.figure(11)
+fig.suptitle("Filtrage 'Passe-haut'")
+# Image de base
+axes[0,0].imshow(img, cmap="gray")
+axes[0,0].set_title("Image de base")
+
+# Gradient x
+axes[0,1].imshow(gradient_x, cmap="gray")
+axes[0,1].set_title("Gradient x")
+
+# Gradient y
+axes[0,2].imshow(gradient_y, cmap="gray")
+axes[0,2].set_title("Gradient y")
+
+# Roberts
+axes[0,3].imshow(roberts, cmap="gray")
+axes[0,3].set_title("Roberts")
+
+# Prewitt
+axes[1,0].imshow(prewitt, cmap="gray")
+axes[1,0].set_title("Prewitt")
+
+# Sobel x
+axes[1,1].imshow(sobel_x, cmap="gray")
+axes[1,1].set_title("Sobel x")
+
+# Sobel y
+axes[1,2].imshow(sobel_y, cmap="gray")
+axes[1,2].set_title("Sobel y")
+
+# Laplacien
+axes[1,3].imshow(laplacian, cmap="gray")
+axes[1,3].set_title("Laplacien")
+
+plt.tight_layout()
 plt.show()
