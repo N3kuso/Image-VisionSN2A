@@ -313,4 +313,73 @@ axes[1,3].imshow(laplacian, cmap="gray")
 axes[1,3].set_title("Laplacien")
 
 plt.tight_layout()
+#plt.show()
+
+###########################################################
+# Q11 :
+###########################################################
+# Définition des noyaux de chaque filtre, pris dans le cours donc peut-être différent de ceux utilisés dans la question précédente
+
+# Initialisation d'une liste de noyau
+kernel_list = []
+# Initialisation d'une liste de titre, associé à chaque noyau
+title_list = []
+
+## Noyau gradient 2x2 ##
+# Noyau gradient x
+kernel_gradient_x = np.array([[0, -1], [0, 1]], dtype=float)
+
+kernel_list.append(kernel_gradient_x)
+title_list.append("Noyau gradient x")
+
+## Noyau Roberts 2x2 ##
+# Noyau Roberts x
+kernel_roberts_x = np.array([[1, 0], [0, -1]], dtype=float)
+
+kernel_list.append(kernel_roberts_x)
+title_list.append("Noyau Roberts x")
+
+## Noyau Prewitt 3x3 ##
+# Noyau Prewitt x
+kernel_prewitt_x = 1/3 * np.array([[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]], dtype=float)
+
+kernel_list.append(kernel_prewitt_x)
+title_list.append("Noyau Prewitt x")
+
+## Noyau Sobel ##
+# Noyau Sobel x
+kernel_sobel_x = 1/4 * np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]], dtype=float)
+
+kernel_list.append(kernel_sobel_x)
+title_list.append("Noyau Sobel x")
+
+## Noyau Laplacien ##
+kernel_laplacian = np.array([[0, -1, 0], [-1, 4, -1], [0, -1, 0]], dtype=float)
+
+kernel_list.append(kernel_laplacian)
+title_list.append("Noyau Laplacien")
+
+print(kernel_list)
+print(title_list)
+
+### Affichage ###
+fig, axes = plt.subplots(nrows=5, ncols=3, figsize=(10,15))
+fig = plt.figure(12)
+fig.suptitle("Fonction de transfert")
+
+for i, kernel in enumerate(kernel_list):
+    # Calcul de la fonction de transfert
+    ft = np.fft.fft2(kernel, s=(64,64))
+
+    # Affichage du noyau
+    axes[i,0].imshow(kernel, cmap='jet')
+
+    # Affichage du module
+    axes[i,1].imshow(np.fft.fftshift(np.abs(ft)),cmap="jet")
+    axes[i,1].set_title(title_list[i])
+
+    # Affichage de l'angle
+    axes[i,2].imshow(np.fft.fftshift(np.angle(ft)), cmap="jet")
+
+plt.tight_layout()
 plt.show()
