@@ -382,4 +382,41 @@ for i, kernel in enumerate(kernel_list):
     axes[i,2].imshow(np.fft.fftshift(np.angle(ft)), cmap="jet")
 
 plt.tight_layout()
+#plt.show()
+
+###########################################################
+# Q12 :
+###########################################################
+from functionsTD3 import EdgeDetection
+
+### Affichage ###
+fig, axes = plt.subplots(nrows=2, ncols=3)
+fig = plt.figure(13)
+fig.suptitle("Détection de contour")
+
+# Image de base
+axes[0,0].imshow(img, cmap="gray")
+axes[0,0].set_title("Image de base")
+
+# Detection de contour gradient simple
+axes[0,1].imshow(EdgeDetection(gradient_x, gradient_y), cmap="gray")
+axes[0,1].set_title("Gradient")
+
+# Detection de contour Roberts 
+axes[0,2].imshow(roberts, cmap="gray")
+axes[0,2].set_title("Roberts")
+
+# Detection de contour Prewitt
+axes[1,0].imshow(prewitt, cmap="gray")
+axes[1,0].set_title("Prewitt")
+
+# Detection de contour sobel
+axes[1,1].imshow(EdgeDetection(sobel_x,sobel_y), cmap="gray")
+axes[1,1].set_title("Sobel x")
+
+# Laplacien
+axes[1,2].imshow(laplacian, cmap="gray")
+axes[1,2].set_title("Laplacien")
+
+plt.tight_layout()
 plt.show()
