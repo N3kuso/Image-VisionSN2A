@@ -7,7 +7,7 @@ Fonctions pour script pour le TD3 Image&Vision
 import numpy as np
 import cv2
 
-def EdgeDetection(gradient_x, gradient_y):
+def EdgeDetection(gradient_x, gradient_y=None):
     """
     Ma Fonction qui permet de détecter les contours d'une image
     
@@ -19,8 +19,11 @@ def EdgeDetection(gradient_x, gradient_y):
         binary_contours -> Image binaire avec contours detectés
     """
 
-    # Calcul du maximum entre les deux gradients
-    gradient_combined = np.maximum(np.abs(gradient_x), np.abs(gradient_y))
+    if gradient_y is None:
+        gradient_combined = np.abs(gradient_x) # Cas pour un seul gradient (ex: Laplacien)
+    else :
+        # Calcul du maximum entre deux gradients
+        gradient_combined = np.maximum(np.abs(gradient_x), np.abs(gradient_y))
 
     # Calcul du négatif de l'image
     gradient_negative = cv2.bitwise_not(gradient_combined.astype(np.uint8))
