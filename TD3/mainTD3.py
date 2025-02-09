@@ -415,7 +415,7 @@ axes[1,1].imshow(EdgeDetection(sobel_x,sobel_y), cmap="gray")
 axes[1,1].set_title("Sobel x")
 
 # Laplacien
-axes[1,2].imshow(laplacian, cmap="gray")
+axes[1,2].imshow(EdgeDetection(laplacian), cmap="gray")
 axes[1,2].set_title("Laplacien")
 
 plt.tight_layout()
