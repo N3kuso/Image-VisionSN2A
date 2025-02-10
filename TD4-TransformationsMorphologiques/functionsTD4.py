@@ -29,3 +29,24 @@ def MyOpen(img, form=cv2.MORPH_RECT, kernel_size=(3,3)):
     img_opened = cv2.dilate(img_eroded, kernel) # Dilatation de l'image
     
     return img_opened
+
+def MyClose(img, form=cv2.MORPH_RECT, kernel_size=(3,3)):
+    """
+    Fonction qui réalise la fermeture
+
+    Input :
+        img -> Image de travail
+        form -> Forme du noyau à utiliser
+        kernel_size = -> Taille du noyau à utiliser
+    
+    Output :
+        img_closed -> Image fermée    
+    """
+
+    # Création du noyau
+    kernel = cv2.getStructuringElement(form, kernel_size)
+
+    img_dilated = cv2.dilate(img, kernel) # Dilatation de l'image
+    img_closed = cv2.erode(img_dilated, kernel) # Erosion de l'image
+    
+    return img_closed
