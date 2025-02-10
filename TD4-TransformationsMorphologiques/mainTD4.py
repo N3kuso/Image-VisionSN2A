@@ -8,7 +8,7 @@ Script pour le TD4 Image&Vision
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2
-
+import functionsTD4
 
 ###########################################################
 # Q2 :
@@ -90,6 +90,31 @@ axes[1].set_title("Image dilatée")
 axes[2].imshow(img_eroded, cmap='gray')
 axes[2].set_title("Image erodée")
 
+###########################################################
+# Q5 :
+###########################################################
+# Ouverture de l'image
+img_opened = functionsTD4.MyOpen(img_binarized)
+
+# Fermeture de l'image
+img_closed = functionsTD4.MyClose(img_binarized)
+
+### Affichage ###
+fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(10,15))
+fig = plt.figure(4)
+fig.suptitle(f"Ouverture/Fermeture")
+
+# Image Binaire
+axes[0].imshow(img_binarized, cmap="gray")
+axes[0].set_title("Image binaire")
+
+# Image Ouverte
+axes[1].imshow(img_opened, cmap='gray')
+axes[1].set_title("Image ouverte")
+
+# Image Fermée
+axes[2].imshow(img_closed, cmap='gray')
+axes[2].set_title("Image fermée")
 
 plt.tight_layout()
 plt.show()
