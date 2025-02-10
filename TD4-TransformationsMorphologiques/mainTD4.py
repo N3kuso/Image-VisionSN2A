@@ -163,5 +163,24 @@ axes[0].set_title("Image binaire")
 axes[1].imshow(img_reconstruct, cmap="gray")
 axes[1].set_title("Reconstruction Morphologique")
 
+###########################################################
+# Q8 :
+###########################################################
+# Extraction des contours
+img_contour = functionsTD4.MyContour(img_binarized)
+
+### Affichage ###
+fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(10,15))
+fig = plt.figure(7)
+fig.suptitle(f"Extraction des contours")
+
+# Gradient Morphologique
+axes[0].imshow(img_morph, cmap="gray")
+axes[0].set_title("Gradient Morphologique")
+
+# Extraction des contours
+axes[1].imshow(img_contour, cmap="gray")
+axes[1].set_title("Contours Extraits")
+
 plt.tight_layout()
 plt.show()
