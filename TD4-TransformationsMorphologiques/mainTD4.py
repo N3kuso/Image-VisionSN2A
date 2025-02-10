@@ -38,7 +38,7 @@ axes[2].imshow(img_binarized, cmap='gray')
 axes[2].set_title("Image binarisé")
 
 ###########################################################
-# Q2 :
+# Q3 :
 ###########################################################
 kernel_size = (3,3) # Taille du noyau 
 kernel =  cv2.getStructuringElement(cv2.MORPH_RECT, kernel_size) # Création d'un noyau carré avec OpenCv
@@ -49,7 +49,7 @@ img_eroded = cv2.erode(img_binarized, kernel) # Erosion de l'image
 ### Affichage ###
 fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(10,15))
 fig = plt.figure(2)
-fig.suptitle("Dilatation/Erosion")
+fig.suptitle(f"Dilatation/Erosion avec noyau carré de taille {kernel_size}")
 
 # Image Binaire
 axes[0].imshow(img_binarized, cmap="gray")
@@ -62,6 +62,34 @@ axes[1].set_title("Image dilatée")
 # Image erodée
 axes[2].imshow(img_eroded, cmap='gray')
 axes[2].set_title("Image erodée")
+
+###########################################################
+# Q4 :
+###########################################################
+# Noyau circulaire de rayon 5
+kernel_size = (5,5) # Taille du noyau 
+kernel =  cv2.getStructuringElement(cv2.MORPH_ELLIPSE, kernel_size) # Création d'un noyau circulaire avec OpenCv
+
+img_dilated = cv2.dilate(img_binarized, kernel) # Dilatation de l'image
+img_eroded = cv2.erode(img_binarized, kernel) # Erosion de l'image
+
+### Affichage ###
+fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(10,15))
+fig = plt.figure(3)
+fig.suptitle(f"Dilatation/Erosion avec noyau disque de rayon {kernel_size}")
+
+# Image Binaire
+axes[0].imshow(img_binarized, cmap="gray")
+axes[0].set_title("Image binaire")
+
+# Image dilatée
+axes[1].imshow(img_dilated, cmap='gray')
+axes[1].set_title("Image dilatée")
+
+# Image erodée
+axes[2].imshow(img_eroded, cmap='gray')
+axes[2].set_title("Image erodée")
+
 
 plt.tight_layout()
 plt.show()
