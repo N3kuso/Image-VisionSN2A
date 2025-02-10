@@ -139,5 +139,29 @@ axes[1].set_title("Image Niv. de gris")
 axes[2].imshow(img_morph, cmap='gray')
 axes[2].set_title("Gradient morphologique")
 
+###########################################################
+# Q7 :
+###########################################################
+# Paramètres pour la reconstruction morphologique
+form = cv2.MORPH_RECT
+kernel_size = (3,3)
+method="dilation"
+
+# Reconstruction morphologique
+img_reconstruct = functionsTD4.MyReconstruct(img_binarized, form=form, kernel_size=kernel_size, method=method)
+
+### Affichage ###
+fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(10,15))
+fig = plt.figure(6)
+fig.suptitle(f"Reconstruction morphologique")
+
+# Image de base
+axes[0].imshow(img_binarized, cmap="gray")
+axes[0].set_title("Image binaire")
+
+# Reconstruction Morphologique
+axes[1].imshow(img_reconstruct, cmap="gray")
+axes[1].set_title("Reconstruction Morphologique")
+
 plt.tight_layout()
 plt.show()
