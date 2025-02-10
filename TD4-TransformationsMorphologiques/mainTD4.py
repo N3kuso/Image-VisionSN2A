@@ -116,5 +116,28 @@ axes[1].set_title("Image ouverte")
 axes[2].imshow(img_closed, cmap='gray')
 axes[2].set_title("Image fermée")
 
+###########################################################
+# Q6 :
+###########################################################
+# Calcul du gradient morphologique sur img niv de gris
+img_morph = functionsTD4.MyGradMorph(img_gray)
+
+### Affichage ###
+fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(10,15))
+fig = plt.figure(5)
+fig.suptitle(f"Gradient morphologique")
+
+# Image de base
+axes[0].imshow(img)
+axes[0].set_title("Image de base")
+
+# Image Binaire
+axes[1].imshow(img_gray, cmap="gray")
+axes[1].set_title("Image Niv. de gris")
+
+# Gradient morphologique
+axes[2].imshow(img_morph, cmap='gray')
+axes[2].set_title("Gradient morphologique")
+
 plt.tight_layout()
 plt.show()
