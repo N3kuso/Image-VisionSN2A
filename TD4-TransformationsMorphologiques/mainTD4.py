@@ -182,5 +182,74 @@ axes[0].set_title("Gradient Morphologique")
 axes[1].imshow(img_contour, cmap="gray")
 axes[1].set_title("Contours Extraits")
 
+###########################################################
+# Q9 :
+###########################################################
+# Réalisation des questions précédentes avec l'image en niveau de gris
+
+# Paramètres 
+form = cv2.MORPH_RECT
+kernel_size = (3,3)
+method="dilation"
+kernel = cv2.getStructuringElement(form, kernel_size)
+
+# Dilatation
+img_dilated = cv2.dilate(img_gray, kernel)
+
+# Erosion
+img_eroded = cv2.erode(img_gray, kernel)
+
+# Ouverture
+img_opened = functionsTD4.MyOpen(img_gray, form=form, kernel_size=kernel_size)
+
+# Fermeture
+img_closed = functionsTD4.MyClose(img_gray, form=form, kernel_size=kernel_size)
+
+# Gradient Morphologique
+img_morph = functionsTD4.MyGradMorph(img_gray, form=form, kernel_size=kernel_size)
+
+# Reconstruction Morphologique
+img_reconstruct = functionsTD4.MyReconstruct(img_gray, form=form, kernel_size=kernel_size, method=method)
+
+# Extraction des contours
+img_contour = functionsTD4.MyContour(img_gray, form=form, kernel_size=kernel_size)
+
+### Affichage ###
+fig, axes = plt.subplots(nrows=2, ncols=4, figsize=(10,15))
+fig = plt.figure(8)
+fig.suptitle(f"Question 9")
+
+# Image Niv. de gris
+axes[0, 0].imshow(img_gray, cmap="gray")
+axes[0, 0].set_title("Image Niv. de gris")
+ 
+# Dilatation
+axes[0, 1].imshow(img_dilated, cmap="gray")
+axes[0, 1].set_title("Dilatation")
+
+# Erosion
+axes[0, 2].imshow(img_eroded, cmap="gray")
+axes[0, 2].set_title("Erosion")
+
+# Ouverture
+axes[0, 3].imshow(img_opened, cmap="gray")
+axes[0, 3].set_title("Ouverture")
+
+# Fermeture
+axes[1, 0].imshow(img_closed, cmap="gray")
+axes[1, 0].set_title("Fermeture")
+
+# Gradient Morphologique
+axes[1, 1].imshow(img_morph, cmap="gray")
+axes[1, 1].set_title("Gradient Morphologique")
+
+# Recontruction Morphologique
+axes[1, 2].imshow(img_reconstruct, cmap="gray")
+axes[1, 2].set_title("Reconstruction Morphologique")
+
+# Extraction de contours
+axes[1, 3].imshow(img_contour, cmap="gray")
+axes[1, 3].set_title("Extraction de contours")
+
 plt.tight_layout()
 plt.show()
