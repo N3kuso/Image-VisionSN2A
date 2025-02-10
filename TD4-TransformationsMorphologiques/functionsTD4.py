@@ -8,6 +8,7 @@ Fonctions pour script pour le TD4 Image&Vision
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2
+from skimage.morphology import reconstruction
 
 def MyOpen(img, form=cv2.MORPH_RECT, kernel_size=(3,3)):
     """
@@ -72,3 +73,28 @@ def MyGradMorph(img, form=cv2.MORPH_RECT, kernel_size=(3,3)):
     img_morph = img_dilated - img_eroded
 
     return img_morph
+
+def MyReconstruct(marker, form=cv2.MORPH_RECT, kernel_size=(3,3), method="dilation"):
+    """
+    Fonction qui réalise la reconstruction morphologique
+
+    Input :
+        marker -> Image marqueur
+        form -> Forme du noyau à utiliser
+        kernel_size = -> Taille du noyau à utiliser
+        methode -> Méthode à utiliser
+    
+    Output :
+        img_reconstruct -> Image calculée  
+    """
+
+    # Création du masque
+    kernel = cv2.getStructuringElement(form, kernel_size)
+
+    # Dilatation de l'image marker
+    mask = cv2.dilate(marker, kernel)
+    
+    # Reconstruction morphologique de l'image
+    img_reconstruct = reconstruction(marker, mask, method=method)
+
+    return img_reconstruct
