@@ -93,8 +93,31 @@ def MyReconstruct(marker, form=cv2.MORPH_RECT, kernel_size=(3,3), method="dilati
 
     # Dilatation de l'image marker
     mask = cv2.dilate(marker, kernel)
-    
+
     # Reconstruction morphologique de l'image
     img_reconstruct = reconstruction(marker, mask, method=method)
 
     return img_reconstruct
+
+def MyContour(img, form=cv2.MORPH_RECT, kernel_size=(3,3)):
+    """
+    Fonction qui réalise l'extraction de contours
+
+    Input :
+        img -> Image de travail
+        form -> Forme du noyau à utiliser
+        kernel_size = -> Taille du noyau à utiliser
+
+    Output :
+        img_contour -> Image avec contours extraits  
+    """
+
+    # Création du noyau
+    kernel = cv2.getStructuringElement(form, kernel_size)
+
+    # Dilatation de l'image marker
+    img_eroded = cv2.erode(img, kernel)
+
+    img_contour = img - img_eroded
+
+    return img_contour
